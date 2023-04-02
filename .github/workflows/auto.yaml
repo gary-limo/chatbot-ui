@@ -1,0 +1,17 @@
+name: Sync Fork with Upstream
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Sync Fork with Upstream
+        uses: pavolloffay/github-action-sync-fork@v1
+        with:
+          upstream_repository: upstream/repo
+          upstream_branch: main
+          github_token: ${{ secrets.GITHUB_TOKEN }}
